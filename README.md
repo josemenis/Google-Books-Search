@@ -15,9 +15,9 @@ In this activity, you'll create a new React-based Google Books Search app. This 
 
 [x] Start by using the **07-Ins_Mern** example as a base for your application.
 
-2. Add code to connect to a MongoDB or MySQL database named `googlebooks`.
+[x] Add code to connect to a MongoDB or MySQL database named `googlebooks`.
 
-3. Create a Book schema. You can use mongoose or Knex if you'd like.
+[ ] Create a Book schema. You can use mongoose or Knex if you'd like.
 
 4. At a minimum, books should have each of the following fields:
 
