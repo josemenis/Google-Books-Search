@@ -5,7 +5,7 @@ const db = require('../models')
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  // Name of database
+  // Name of database, check ROBO3T
   'mongodb://localhost/googlebooks'
 )
 
