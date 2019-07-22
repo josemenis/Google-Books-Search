@@ -14,7 +14,9 @@ class Search extends Component {
     books: [],
     title: "",
     author: "",
-    synopsis: ""
+    description: "",
+    image: "",
+    link: ""
   };
 
   componentDidMount() {
@@ -22,20 +24,21 @@ class Search extends Component {
   }
 
   loadBooks = () => {
+    //imported API from '../utils/API'
     API.getBooks()
       .then(response => response.json())
       .then(res =>
-        this.setState({ books: res, title: "", author: "", synopsis: "" })
+        this.setState({ books: res, title: "", author: "", description: "", image: "", link: "" })
       )
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(response => response.json())
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
+  // deleteBook = id => {
+  //   API.deleteBook(id)
+  //     .then(response => response.json())
+  //     .then(res => this.loadBooks())
+  //     .catch(err => console.log(err));
+  // };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -44,19 +47,19 @@ class Search extends Component {
     });
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(response => response.json())
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.title && this.state.author) {
+  //     API.saveBook({
+  //       title: this.state.title,
+  //       author: this.state.author,
+  //       synopsis: this.state.synopsis
+  //     })
+  //       .then(response => response.json())
+  //       .then(res => this.loadBooks())
+  //       .catch(err => console.log(err));
+  //   }
+  // };
 
   render () {
     return (
@@ -72,8 +75,12 @@ class Search extends Component {
           <Card>
   <Card.Body>
     <Card.Title>Book Search</Card.Title>
-    <Input
+    <Input      
+                title={this.state.title1}
                 value={this.state.author}
+                description={this.state.description}
+                image={this.state.image}
+                link={this.state.link}
                 onChange={this.handleInputChange}
                 name="book"
                 placeholder="Book Name (required)"
@@ -91,7 +98,7 @@ class Search extends Component {
         </Col>
       </Row>
     </Container>
-    
+
     </div>
     )
   }
