@@ -91,6 +91,7 @@ class Search extends Component {
         </Col>
       </Row>
     </Container>
+    
     </div>
     )
   }
