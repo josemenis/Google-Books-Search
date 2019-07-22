@@ -5,18 +5,17 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input } from "../components/Form";
 // import SearchResult from '../components/SearchResult';
+import {GoogleBooksAPI as Keys} from "../utils/Key";
 
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 class Search extends Component {
-  state = {
-    books: [],
-    title: "",
-    author: "",
-    description: "",
-    image: "",
-    link: ""
+    state = {
+      books: [],
+      title: "",
+      author: "",
+      synopsis: ""
   };
 
   componentDidMount() {
@@ -24,21 +23,21 @@ class Search extends Component {
   }
 
   loadBooks = () => {
-    //imported API from '../utils/API'
-    API.getBooks()
+    fetch(`https://WWW.googleapis.com/books/v1/volumes?q=${this.state.book}`)
       .then(response => response.json())
       .then(res =>
-        this.setState({ books: res, title: "", author: "", description: "", image: "", link: "" })
-      )
+        // this.setState({ books: res, title: "", author: "", description: "", image: "", link: "" })
+        this.setState({ books: res, title: "", author: "", synopsis: "" })
+        )
       .catch(err => console.log(err));
   };
 
-  // deleteBook = id => {
-  //   API.deleteBook(id)
-  //     .then(response => response.json())
-  //     .then(res => this.loadBooks())
-  //     .catch(err => console.log(err));
-  // };
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(response => response.json())
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
+  };
 
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -47,19 +46,19 @@ class Search extends Component {
     });
   };
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(response => response.json())
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.title && this.state.author) {
+      API.saveBook({
+        title: this.state.title,
+        author: this.state.author,
+        synopsis: this.state.synopsis
+      })
+        .then(response => response.json())
+        .then(res => this.loadBooks())
+        .catch(err => console.log(err));
+    }
+  };
 
   render () {
     return (
@@ -75,7 +74,7 @@ class Search extends Component {
           <Card>
   <Card.Body>
     <Card.Title>Book Search</Card.Title>
-    <Input      
+    {/* <Input      type="text"    
                 title={this.state.title1}
                 value={this.state.author}
                 description={this.state.description}
@@ -84,6 +83,12 @@ class Search extends Component {
                 onChange={this.handleInputChange}
                 name="book"
                 placeholder="Book Name (required)"
+              /> */}
+              <Input
+                value={this.state.author}
+                onChange={this.handleInputChange}
+                name="author"
+                placeholder="Author (required)"
               />
     
     <Button variant="primary">Search</Button>
