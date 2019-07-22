@@ -4,7 +4,7 @@ import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input } from "../components/Form";
-import SearchResult from '../components/SearchResult';
+// import SearchResult from '../components/SearchResult';
 
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -85,7 +85,7 @@ class Search extends Component {
       <Card>
         <Card.Body>
         <Card.Title>Results</Card.Title>
-        <SearchResult />
+        {/* <SearchResult /> */}
         </Card.Body>
       </Card>
         </Col>
