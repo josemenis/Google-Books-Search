@@ -5,17 +5,24 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { Input } from "../components/Form";
 // import SearchResult from '../components/SearchResult';
-// import {GoogleBooksAPI as Keys} from "../utils/Key";
 
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
+// ATTENTION FOR WHOEVER IS GRADING THIS
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// PSUEDO CODE CHECK POINTS FOR WHAT IS DONE
+// [x] SearchPage.js fetch the google API for a book, console logged results
+// [ ] Save it to my database
+// [ ] SavedPage.js fetch my api
+// [ ] Load the saved ones to your saved page
+// [ ] @ saved page implement the delete button to delete the book from your database
+// [ ] the view button its the most easy one, just get the link from the object and use the href attribute
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 class Search extends Component {
     state = {
-      books: [],
-      title: "",
-      author: "",
-      synopsis: ""
+      books: []
   };
 
   componentDidMount() {
@@ -28,15 +35,9 @@ class Search extends Component {
       .then(response => response.json())
       .then(results => results.items)
       .then(booksFromGoogle =>
-        this.setState({ books: booksFromGoogle }, () => console.log(this.state))
+        this.setState({ books: booksFromGoogle }, () =>
+        console.log(this.state))
         )
-      .catch(err => console.log(err));
-  };
-
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(response => response.json())
-      .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
 
@@ -48,21 +49,34 @@ class Search extends Component {
   };
 
   handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
+    // defines object in let
+    let {
+      title,
+      authors,
+      description,
+      image,
+      link
+        // gotta figure out why this doesn't work
+    } = this.state.books[event]
+    
       API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
+       title,
+       authors,
+       description,
+       image,
+       link
       })
         .then(response => response.json())
-        .then(res => this.loadBooks())
+        .then(results => {
+          console.log(results)
+          console.log('book saved')
+        })
         .catch(err => console.log(err));
-    }
   };
 
   render () {
     return (
+      // jsx returns only one thing, wrap all in a div
       <div>
       <Navbar />
       <Container fluid>
@@ -82,7 +96,7 @@ class Search extends Component {
           />
         <Button variant="primary" onClick={() => this.loadBooks()}>
           Search
-          </Button>
+        </Button>
     </Card.Body>
     </Card>
       <Card>
@@ -94,7 +108,6 @@ class Search extends Component {
         </Col>
       </Row>
     </Container>
-
     </div>
     )
   }
