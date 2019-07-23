@@ -90,10 +90,9 @@ class Search extends Component {
                 name="author"
                 placeholder="Author (required)"
               />
-    
-    <Button variant="primary">Search</Button>
-  </Card.Body>
-</Card>
+        <Button variant="primary" onClick={() => this.loadBooks()}>Search</Button>
+    </Card.Body>
+    </Card>
       <Card>
         <Card.Body>
         <Card.Title>Results</Card.Title>
