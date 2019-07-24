@@ -3,8 +3,7 @@ import Navbar from '../components/Navbar'
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
-import { Input } from "../components/Form";
-// import SearchResult from '../components/SearchResult';
+import Form from "../components/Form";
 
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -73,42 +72,61 @@ class Search extends Component {
         .catch(err => console.log(err));
   };
 
-  render () {
-    return (
-      // jsx returns only one thing, wrap all in a div
-      <div>
-      <Navbar />
-      <Container fluid>
-      <Row>
-        <Col size="md-12">
-          <Jumbotron>
-            <h1>(React) Google Books Search</h1>
-            <p>Search for and Save Books of Interest</p>
-          </Jumbotron>
-          <Card>
-  <Card.Body>
-    <Card.Title>Book Search</Card.Title>
-          <Input
-          onChange={this.handleInputChange}
-          name="book"
-          placeholder="Book Name (required)"
-          />
-        <Button variant="primary" onClick={() => this.loadBooks()}>
-          Search
-        </Button>
-    </Card.Body>
-    </Card>
-      <Card>
-        <Card.Body>
-        <Card.Title>Results</Card.Title>
-        {/* <SearchResult /> */}
-        </Card.Body>
-      </Card>
-        </Col>
-      </Row>
+  // render () {
+  //   return (
+  //     // jsx returns only one thing, wrap all in a div
+  //     <div>
+  //     <Navbar />
+  //     <Container fluid>
+  //     <Row>
+  //       <Col size="md-12">
+  //         <Jumbotron>
+  //           <h1>(React) Google Books Search</h1>
+  //           <p>Search for and Save Books of Interest</p>
+  //         </Jumbotron>
+  //         <Card>
+  // <Card.Body>
+  //   <Card.Title>Book Search</Card.Title>
+  //         <Form
+  //         onChange={this.handleInputChange}
+  //         name="book"
+  //         placeholder="Book Name (required)"
+  //         />
+  //       <Button variant="primary" onClick={() => this.loadBooks()}>
+  //         Search
+  //       </Button>
+  //   </Card.Body>
+  //   </Card>
+  //     <Card>
+  //       <Card.Body>
+  //       <Card.Title>Results</Card.Title>
+  //       {/* <SearchResult /> */}
+  //       </Card.Body>
+  //     </Card>
+  //       </Col>
+  //     </Row>
+  //   </Container>
+  //   </div>
+  //   )
+  // }
+
+  render() {
+    return(
+    <div>
+    <Navbar />
+    <Container fluid>
+    <Row>
+    <Col size="md-12">
+      <Jumbotron>
+       <h1>(React) Google Books Search</h1>
+       <p>Search for and Save Books of Interest</p>
+      </Jumbotron>
+      <Form />
+    </Col>
+    </Row>
     </Container>
     </div>
     )
-  }
+    }
 }
 export default Search
