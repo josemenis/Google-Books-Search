@@ -22,7 +22,8 @@ import Button from "react-bootstrap/Button";
 
 class Search extends Component {
     state = {
-      books: []
+      books: [],
+      q: ''
   };
 
   componentDidMount() {
@@ -30,14 +31,12 @@ class Search extends Component {
   }
 
   loadBooks = () => {
-                                                      // {this.state.book} bc <input name="book"
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${this.state.book}`)
+      API.getBooks(this.state.q)            
       .then(response => response.json())
-      .then(results => results.items)
-      .then(booksFromGoogle =>
-        this.setState({ books: booksFromGoogle }, () =>
-        console.log(this.state))
-        )
+      .then(results => 
+        this.setState({
+          books: results
+        }))
       .catch(err => console.log(err));
   };
 

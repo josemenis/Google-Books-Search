@@ -1,11 +1,11 @@
 export default {
   // Gets all books
-  getBooks: function () {
-    return fetch('/api/books')
+  getBooks: function (q) {
+    return fetch(`/api/google?q=title:${q}`)
   },
   // Gets the book with the given id
-  getBook: function (id) {
-    return fetch('/api/books/' + id)
+  getSavedBooks: function () {
+    return fetch('/api/books')
   },
   // Deletes the book with the given id
   deleteBook: function (id) {
