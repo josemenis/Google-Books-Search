@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Navbar from '../components/Navbar'
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+// import { Book } from '../components/Book';
 import { Col, Row, Container } from "../components/Grid";
 import Form from "../components/Form";
 
@@ -42,7 +43,7 @@ class Search extends Component {
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      query: value
     });
   };
 
@@ -50,19 +51,23 @@ class Search extends Component {
     // defines object in let
     let {
       title,
+      subtitle,
       authors,
       description,
       image,
-      link
+      link,
+      googleID
         // gotta figure out why this doesn't work
-    } = this.state.books[event]
+    } = this.state.books[event.target]
     
       API.saveBook({
-       title,
-       authors,
-       description,
-       image,
-       link
+        title,
+        subtitle,
+        authors,
+        description,
+        image,
+        link,
+        googleID
       })
         .then(response => response.json())
         .then(results => {
@@ -122,6 +127,9 @@ class Search extends Component {
        <p>Search for and Save Books of Interest</p>
       </Jumbotron>
       <Form />
+      {/* <Book 
+      
+      /> */}
     </Col>
     </Row>
     </Container>

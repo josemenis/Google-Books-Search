@@ -15,7 +15,7 @@ function Form (props) {
           id='Title'
           type='text'
           value={q}
-          placeholder='Ready Player One'
+          placeholder='Book Title'
           name='q'
           onChange={handleInputChange}
           required
@@ -25,7 +25,7 @@ function Form (props) {
         <button
           onClick={handleFormSubmit}
           type='submit'
-          className='btn btn-lg btn-danger float-right'
+          className='btn btn-lg btn-danger float-left'
         >
         Search
         </button>

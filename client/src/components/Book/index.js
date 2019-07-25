@@ -1,7 +1,7 @@
 import React from 'react'
 import { ListItem } from '../List'
 import { Row, Col } from '../Grid'
-import './style.css'
+// import './style.css'
 
 function Book (props) {
   let { title, subtitle, authors, link, description, image, Button } = props
@@ -37,5 +37,4 @@ function Book (props) {
     </ListItem>
   )
 }
-
 export default Book
