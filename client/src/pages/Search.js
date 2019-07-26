@@ -12,7 +12,8 @@ import Button from "react-bootstrap/Button";
 // ATTENTION FOR WHOEVER IS GRADING THIS
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // PSUEDO CODE CHECK POINTS FOR WHAT IS DONE
-// [x] SearchPage.js fetch the google API for a book, console logged results
+// [x] Routes @ Navbar to switch between Saved Pg. & Search Pg.
+// [ ] SearchPage.js fetch the google API for a book, console logged results
 // [ ] Save it to my database
 // [ ] SavedPage.js fetch my api
 // [ ] Load the saved ones to your saved page

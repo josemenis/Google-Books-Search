@@ -21,7 +21,10 @@
     * `image` - The Book's thumbnail image as returned from the Google Books API
     * `link` - The Book's information link as returned from the Google Books API
 
-* [x] Create a layout similar to the mockups displayed above. This should be a SPA (Single Page Application) that uses [`react-router-dom`](https://github.com/reactjs/react-router) to navigate, hide and show your React components without changing the route within Express.
+* [x] Search Page Create a layout similar to the mockups. 
+* [ ] Saved Page Create a layout similar to the mockups. 
+
+* [x] [`react-router-dom`](https://github.com/reactjs/react-router) to navigate, hide and show your React components without changing the route within Express.
 
 * The layout should include at least two React Components for each page `Search` and `Saved`.
 
