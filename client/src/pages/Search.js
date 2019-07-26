@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
+import API from "../utils/API";
+import { Col, Row, Container } from "../components/Grid";
 import Navbar from '../components/Navbar'
 import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
-// import { Book } from '../components/Book';
-import { Col, Row, Container } from "../components/Grid";
 import Form from "../components/Form";
+import Book from '../components/Book';
 
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -127,9 +127,15 @@ class Search extends Component {
        <p>Search for and Save Books of Interest</p>
       </Jumbotron>
       <Form />
-      {/* <Book 
-      
-      /> */}
+      <Book
+       title={this.state.books.title}
+       subtitle={this.state.books.subtitle}
+       authors={this.state.books.authors}
+       link={this.state.books.link}
+       description={this.state.books.description}
+       image={this.state.books.image}
+      //  Button={onClick={() => this.loadBooks()}}
+       />
     </Col>
     </Row>
     </Container>
