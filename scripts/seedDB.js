@@ -10,11 +10,13 @@ mongoose.connect(
 )
 
 const Book = [{
-  title: 'fake book',
-  authors: ['auth1', 'auth2'],
-  description: "doesn't extist",
-  image: 'fake.jpg',
-  link: 'href='
+  title: 'cygvjhbk',
+  subtitle: 'vghbjk',
+  authors: ['ghbjn', 'tcfgvhbj'],
+  description: 'fgvhbjnkm',
+  image: 'dfcvgbhj',
+  link: 'rydtfjgk',
+  googleId: '12, 34'
 }]
 
 db.Book

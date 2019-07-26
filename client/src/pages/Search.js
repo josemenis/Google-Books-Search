@@ -40,14 +40,23 @@ class Search extends Component {
       .catch(err => console.log(err));
   };
 
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(response => response.json())
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
+  };
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
-      query: value
+      [name]: value
     });
   };
 
   handleFormSubmit = event => {
+    console.log('123456789')
+    console.log(event)
     // defines object in let
     let {
       title,
@@ -58,7 +67,7 @@ class Search extends Component {
       link,
       googleID
         // gotta figure out why this doesn't work
-    } = this.state.books[event.target]
+    } = this.state.books[event.target.data]
     
       API.saveBook({
         title,
@@ -76,44 +85,6 @@ class Search extends Component {
         })
         .catch(err => console.log(err));
   };
-
-  // render () {
-  //   return (
-  //     // jsx returns only one thing, wrap all in a div
-  //     <div>
-  //     <Navbar />
-  //     <Container fluid>
-  //     <Row>
-  //       <Col size="md-12">
-  //         <Jumbotron>
-  //           <h1>(React) Google Books Search</h1>
-  //           <p>Search for and Save Books of Interest</p>
-  //         </Jumbotron>
-  //         <Card>
-  // <Card.Body>
-  //   <Card.Title>Book Search</Card.Title>
-  //         <Form
-  //         onChange={this.handleInputChange}
-  //         name="book"
-  //         placeholder="Book Name (required)"
-  //         />
-  //       <Button variant="primary" onClick={() => this.loadBooks()}>
-  //         Search
-  //       </Button>
-  //   </Card.Body>
-  //   </Card>
-  //     <Card>
-  //       <Card.Body>
-  //       <Card.Title>Results</Card.Title>
-  //       {/* <SearchResult /> */}
-  //       </Card.Body>
-  //     </Card>
-  //       </Col>
-  //     </Row>
-  //   </Container>
-  //   </div>
-  //   )
-  // }
 
   render() {
     return(
@@ -134,7 +105,22 @@ class Search extends Component {
        link={this.state.books.link}
        description={this.state.books.description}
        image={this.state.books.image}
-      //  Button={onClick={() => this.loadBooks()}}
+       Button= {() => 
+        <button
+        // --------- Regular Function ----------->
+        //   onClick={function() {
+        //   return this.handleFormSubmit()
+        //   }
+        // }
+        //---------- Arrow Function ------------->
+          onClick={ () => {
+             return this.handleFormSubmit();
+            } 
+          }
+        >
+        Save Book
+        </button>
+      }
        />
     </Col>
     </Row>

@@ -15,11 +15,11 @@
 * [x] Create a Book schema. You can use mongoose or Knex if you'd like.
 
 * [x] At a minimum, books should have each of the following fields:
-* `title` - Title of the book from the Google Books API
-* `authors` - The books's author(s) as returned from the Google Books API
-* `description` - The book's description as returned from the Google Books API
-* `image` - The Book's thumbnail image as returned from the Google Books API
-* `link` - The Book's information link as returned from the Google Books API
+    * `title` - Title of the book from the Google Books API
+    * `authors` - The books's author(s) as returned from the Google Books API
+    * `description` - The book's description as returned from the Google Books API
+    * `image` - The Book's thumbnail image as returned from the Google Books API
+    * `link` - The Book's information link as returned from the Google Books API
 
 * [x] Create a layout similar to the mockups displayed above. This should be a SPA (Single Page Application) that uses [`react-router-dom`](https://github.com/reactjs/react-router) to navigate, hide and show your React components without changing the route within Express.
 
@@ -27,11 +27,11 @@
 
 * [ ] Add the following Express routes for your app:
 
-* `/api/books` (get) - Should return all saved books as JSON.
+    * `/api/books` (get) - Should return all saved books as JSON.
 
-* `/api/books` (post) - Will be used to save a new book to the database.
+    * `/api/books` (post) - Will be used to save a new book to the database.
 
-* `/api/books/:id` (delete) - Will be used to delete a book from the database.
+    * `/api/books/:id` (delete) - Will be used to delete a book from the database.
 
 * (get) - Will load your single HTML page in `client/build/index.html`. Make sure you have this _after_ all other routes are defined.
 
