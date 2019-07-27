@@ -9,7 +9,7 @@ mongoose.connect(
   'mongodb://localhost/googlebooks'
 )
 
-const Book = [{
+const bookSeed = [{
   title: 'cygvjhbk',
   subtitle: 'vghbjk',
   authors: ['ghbjn', 'tcfgvhbj'],
@@ -21,7 +21,7 @@ const Book = [{
 
 db.Book
   .remove({})
-  .then(() => db.Book.collection.insertMany(Book))
+  .then(() => db.Book.collection.insertMany(bookSeed))
   .then(data => {
     console.log(data.result.n + ' records inserted!')
     process.exit(0)

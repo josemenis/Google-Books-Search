@@ -5,10 +5,10 @@ import Navbar from '../components/Navbar'
 import Jumbotron from "../components/Jumbotron";
 import Form from "../components/Form";
 import Book from '../components/Book';
-import { List, ListItem } from '../components/List';
+import { List } from '../components/List';
 
 // import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 
 // ATTENTION FOR WHOEVER IS GRADING THIS
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -73,12 +73,25 @@ class Search extends Component {
 
   handleSaveBook = id => {
     // get book details from state
-    // const
+    const book= this.state.books.find((book) => book.id === id)
+    console.log(book)
     // send book details to save book api
+    API.saveBook({
+      title: book.volumeInfo.title,
+      subtitle: book.volumeInfo.subtitle,
+      authors: book.volumeInfo.authors,
+      description: book.volumeInfo.description,
+      image: book.volumeInfo.imageLinks.smallThumbnail,
+      link: book.volumeInfo.infoLink,
+      googleId: book.id
+    })
+    .then(response => response.json())
+    .then(res => this.loadBooks())
+
+    .catch(err => console.log(err));
+};
     // then load books
     // API.saveBook(id) 
-
-  }
 
   render() {
     return (
@@ -98,7 +111,7 @@ class Search extends Component {
               />
               <br />
               <br />
-              {/* If multiple books, list them and map through each */}
+              {/* If books display books, if not diplay no results */}
               {this.state.books.length ? (
                 <List>
                 {
@@ -115,7 +128,7 @@ class Search extends Component {
                       description={book.volumeInfo.description}
                       image={book.volumeInfo.imageLinks.smallThumbnail}
                       Button={() =>
-                        <button onClick={() => this.handleSaveBook()}
+                        <button onClick={() => this.handleSaveBook(book.id)}
                         >
                         Save Book
                         </button>

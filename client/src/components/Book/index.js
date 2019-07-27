@@ -14,9 +14,6 @@ function Book (props) {
         </Col>
         <Col size='md-4'>
           <div className='btn-container'>
-            <a className='btn btn-light' target='_blank' rel='noopener noreferrer' href={link}>
-              View
-            </a>
             <Button />
           </div>
         </Col>

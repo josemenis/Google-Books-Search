@@ -10,7 +10,8 @@ export function List ({ children }) {
     </div>
   )
 }
-
+                          // key added to arg, why?
 export function ListItem ({ key, children }) {
+          // key is added here ask why?
   return <li key={key} className='list-group-item'>{children}</li>
 }
