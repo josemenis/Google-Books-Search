@@ -16,7 +16,7 @@ import Button from "react-bootstrap/Button";
 // [x] Routes @ Navbar to switch between Saved Pg. & Search Pg.
 // [x] Google API server files added with help, couldn't figure out on my own.
 // [ ] 
-// [ ] SearchPage.js fetch the google API for a book, console logged results
+// [ ] SearchPage.js fetch the google API for a book, view it 
 // [ ] Save it to my database
 // [ ] SavedPage.js fetch my api
 // [ ] Load the saved ones to your saved page
@@ -38,9 +38,13 @@ class Search extends Component {
     API.getBooks(this.state.q)
       .then(response => response.json())
       .then(results => {
+        // q results
+        console.log(results)
         this.setState({
+          // books comes back as an object, we only want the items.
           books: results.items
         })
+        
         console.log(this.state.books)
       })
       .catch(err => console.log(err));
@@ -87,7 +91,6 @@ class Search extends Component {
                 <h1>(React) Google Books Search</h1>
                 <p>Search for and Save Books of Interest</p>
               </Jumbotron>
-              {/*{ q, handleInputChange, handleFormSubmit } = props */}
               <Form
                 q={this.state.q}
                 handleInputChange={this.handleInputChange}
@@ -95,17 +98,18 @@ class Search extends Component {
               />
               <br />
               <br />
+              {/* If multiple books, list them and map through each */}
               {this.state.books.length ? (
                 <List>
                 {
                   this.state.books.map(book => (                  
                     <Book
-                      // unique key
+                      // unique key, figure out this error
                       id={book.id}
                       key={book.id}
                       title={book.volumeInfo.title}
                       subtitle={book.volumeInfo.subtitle}
-                      // if no author
+                      // if no author ignore with ternary
                       authors={book.volumeInfo.authors ? book.volumeInfo.authors.join(): ""}
                       link={book.volumeInfo.infoLink}
                       description={book.volumeInfo.description}
