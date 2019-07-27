@@ -4,9 +4,9 @@ import { Row, Col } from '../Grid'
 // import './style.css'
 
 function Book (props) {
-  let { title, subtitle, authors, link, description, image, Button } = props
+  let { key, title, subtitle, authors, link, description, image, Button } = props
   return (
-    <ListItem>
+    <ListItem key={key}>
       <Row className='flex-wrap-reverse'>
         <Col size='md-8'>
           <h3 className='font-italic'>{title}</h3>

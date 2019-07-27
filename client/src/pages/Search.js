@@ -5,8 +5,9 @@ import Navbar from '../components/Navbar'
 import Jumbotron from "../components/Jumbotron";
 import Form from "../components/Form";
 import Book from '../components/Book';
+import { List, ListItem } from '../components/List';
 
-import Card from "react-bootstrap/Card";
+// import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 // ATTENTION FOR WHOEVER IS GRADING THIS
@@ -24,22 +25,24 @@ import Button from "react-bootstrap/Button";
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 class Search extends Component {
-    state = {
-      books: [],
-      q: ''
+  state = {
+    books: [],
+    q: ''
   };
 
   componentDidMount() {
-    this.loadBooks();
+    // this.loadBooks()
   }
 
   loadBooks = () => {
-      API.getBooks(this.state.q)            
+    API.getBooks(this.state.q)
       .then(response => response.json())
-      .then(results => 
+      .then(results => {
         this.setState({
-          books: results
-        }))
+          books: results.items
+        })
+        console.log(this.state.books)
+      })
       .catch(err => console.log(err));
   };
 
@@ -58,80 +61,74 @@ class Search extends Component {
   };
 
   handleFormSubmit = event => {
-    console.log('123456789')
-    console.log(event)
-    // defines object in let
-    let {
-      title,
-      subtitle,
-      authors,
-      description,
-      image,
-      link,
-      googleID
-        // gotta figure out why this doesn't work
-    } = this.state.books[event.target.data]
-    
-      API.saveBook({
-        title,
-        subtitle,
-        authors,
-        description,
-        image,
-        link,
-        googleID
-      })
-        .then(response => response.json())
-        .then(results => {
-          console.log(results)
-          console.log('book saved')
-        })
-        .catch(err => console.log(err));
+    event.preventDefault();
+    if (this.state.q) {
+      this.loadBooks()
+    }
   };
 
+  handleSaveBook = id => {
+    // get book details from state
+    // const
+    // send book details to save book api
+    // then load books
+    // API.saveBook(id) 
+
+  }
+
   render() {
-    return(
-    <div>
-    <Navbar />
-    <Container fluid>
-    <Row>
-    <Col size="md-12">
-      <Jumbotron>
-       <h1>(React) Google Books Search</h1>
-       <p>Search for and Save Books of Interest</p>
-      </Jumbotron>
-      <Form />
-      <br />
-      <br />
-      <Book
-       title={this.state.books.title}
-       subtitle={this.state.books.subtitle}
-       authors={this.state.books.authors}
-       link={this.state.books.link}
-       description={this.state.books.description}
-       image={this.state.books.image}
-       Button= {() => 
-        <button
-        // --------- Regular Function ----------->
-        //   onClick={function() {
-        //   return this.handleFormSubmit()
-        //   }
-        // }
-        //---------- Arrow Function ------------->
-          onClick={ () => {
-             return this.handleFormSubmit();
-            } 
-          }
-        >
-        Save Book
-        </button>
-      }
-       />
-    </Col>
-    </Row>
-    </Container>
-    </div>
+    return (
+      <div>
+        <Navbar />
+        <Container fluid>
+          <Row>
+            <Col size="md-12">
+              <Jumbotron>
+                <h1>(React) Google Books Search</h1>
+                <p>Search for and Save Books of Interest</p>
+              </Jumbotron>
+              {/*{ q, handleInputChange, handleFormSubmit } = props */}
+              <Form
+                q={this.state.q}
+                handleInputChange={this.handleInputChange}
+                handleFormSubmit={this.handleFormSubmit}
+              />
+              <br />
+              <br />
+              {this.state.books.length ? (
+                <List>
+                {
+                  this.state.books.map(book => (                  
+                    <Book
+                      // unique key
+                      id={book.id}
+                      key={book.id}
+                      title={book.volumeInfo.title}
+                      subtitle={book.volumeInfo.subtitle}
+                      // if no author
+                      authors={book.volumeInfo.authors ? book.volumeInfo.authors.join(): ""}
+                      link={book.volumeInfo.infoLink}
+                      description={book.volumeInfo.description}
+                      image={book.volumeInfo.imageLinks.smallThumbnail}
+                      Button={() =>
+                        <button onClick={() => this.handleSaveBook()}
+                        >
+                        Save Book
+                        </button>
+                      }
+                    />
+                  )
+                )
+              }
+              </List>
+              ) : (
+                  <h3>No Results to Display</h3>
+                )}
+            </Col>
+          </Row>
+        </Container>
+      </div>
     )
-    }
+  }
 }
 export default Search

@@ -7,6 +7,7 @@ module.exports = {
     const { query: params } = req
     axios.get('https://www.googleapis.com/books/v1/volumes', { params })
       .then(results => {
+        console.log('--------googleController.js------------------------')
         console.log(results.data)
         //
         res.json(results.data)
