@@ -73,6 +73,7 @@ class Search extends Component {
 
   handleSaveBook = id => {
     // get book details from state
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
     const book= this.state.books.find((book) => book.id === id)
     console.log(book)
     // send book details to save book api
