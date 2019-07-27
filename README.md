@@ -4,9 +4,9 @@
 
   * [x] [Search](Search.png) - User can search for books via the Google Books API
   
-  * [ ] Render them here. User has the option to "View" a book, bringing them to the book on Google Books, or "Save" a book, saving it to the database.
+  * [x] Render them here. User has the option to "View" a book, bringing them to the book on Google Books, or "Save" a book, saving it to the database.
 
-  * [ ] [Saved](Saved.png) - Renders all books saved to the database. User has an option to "View" the book, bringing them to the book on Google Books, or "Delete" a book, removing it from the database.
+  * [x] [Saved](Saved.png) - Renders all books saved to the database. User has an option to "View" the book, bringing them to the book on Google Books, or "Delete" a book, removing it from the database.
 
 * [x] Start by using the 07-Ins_Mern example as a base for your application.
 
@@ -22,13 +22,13 @@
     * `link` - The Book's information link as returned from the Google Books API
 
 * [x] Search Page Create a layout similar to the mockups. 
-* [ ] Saved Page Create a layout similar to the mockups. 
+* [x] Saved Page Create a layout similar to the mockups. 
 
 * [x] [`react-router-dom`](https://github.com/reactjs/react-router) to navigate, hide and show your React components without changing the route within Express.
 
 * The layout should include at least two React Components for each page `Search` and `Saved`.
 
-* [ ] Add the following Express routes for your app:
+* [x] Add the following Express routes for your app:
 
     * `/api/books` (get) - Should return all saved books as JSON.
 

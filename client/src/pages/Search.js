@@ -7,23 +7,6 @@ import Form from "../components/Form";
 import Book from '../components/Book';
 import { List } from '../components/List';
 
-// import Card from "react-bootstrap/Card";
-// import Button from "react-bootstrap/Button";
-
-// ATTENTION FOR WHOEVER IS GRADING THIS
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// PSUEDO CODE CHECK POINTS FOR WHAT IS DONE
-// [x] Routes @ Navbar to switch between Saved Pg. & Search Pg.
-// [x] Google API server files added with help, couldn't figure out on my own.
-// [ ] 
-// [ ] SearchPage.js fetch the google API for a book, view it 
-// [ ] Save it to my database
-// [ ] SavedPage.js fetch my api
-// [ ] Load the saved ones to your saved page
-// [ ] @ saved page implement the delete button to delete the book from your database
-// [ ] the view button its the most easy one, just get the link from the object and use the href attribute
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 class Search extends Component {
   state = {
     books: [],
@@ -91,8 +74,6 @@ class Search extends Component {
 
     .catch(err => console.log(err));
 };
-    // then load books
-    // API.saveBook(id) 
 
   render() {
     return (
@@ -118,7 +99,6 @@ class Search extends Component {
                 {
                   this.state.books.map(book => (                  
                     <Book
-                      // unique key, figure out this error
                       id={book.id}
                       key={book.id}
                       title={book.volumeInfo.title}

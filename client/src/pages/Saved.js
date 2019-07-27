@@ -3,7 +3,6 @@ import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import Navbar from '../components/Navbar'
 import Jumbotron from "../components/Jumbotron";
-import Form from "../components/Form";
 import Book from '../components/Book';
 import { List } from '../components/List';
 
@@ -54,7 +53,6 @@ class Saved extends Component {
                 {
                   this.state.books.map(book => (                  
                     <Book
-                      // unique key, figure out this error
                       id={book._id}
                       key={book._id}
                       title={book.title}
