@@ -46,7 +46,7 @@ class Saved extends Component {
             <Col size="md-12">
               <Jumbotron>
                 <h1>(React) Google Books Saved</h1>
-                <p>Search for and Save Books of Interest</p>
+                <p>Display Books Saved in googlebooks DB</p>
               </Jumbotron>
               <br />
               {/* If books display books, if not diplay no results */}
