@@ -4,9 +4,17 @@
 
   * [x] [Search](Search.png) - User can search for books via the Google Books API
   
-  * [x] Render them here. User has the option to "View" a book, bringing them to the book on Google Books, or "Save" a book, saving it to the database.
+    * [x] Render them here. 
 
-  * [x] [Saved](Saved.png) - Renders all books saved to the database. User has an option to "View" the book, bringing them to the book on Google Books, or "Delete" a book, removing it from the database.
+    * [ ] User has the option to "View" a book, bringing them to the book on Google Books
+
+    * [x] "Save" a book, saving it to the database.
+
+  * [x] [Saved](Saved.png) - Renders all books saved to the database. 
+  
+    * [ ] User has an option to "View" the book, bringing them to the book on Google Books
+  
+    * [x] "Delete" a book, removing it from the database.
 
 * [x] Start by using the 07-Ins_Mern example as a base for your application.
 
