@@ -19,10 +19,12 @@ class Saved extends Component {
     API.getSavedBooks()
       .then(response => response.json())
       .then(results => {
+        console.log('-------getSavedBooks results--------')
         console.log(results)
         this.setState({
           books: results
         })
+        console.log('------getSavedBooks this.state.books--------')
         console.log(this.state.books)
       })
       .catch(err => console.log(err));
@@ -53,11 +55,12 @@ class Saved extends Component {
                 {
                   this.state.books.map(book => (                  
                     <Book
+                      // values from getSavedBooks results
                       id={book._id}
                       key={book._id}
                       title={book.title}
                       subtitle={book.subtitle}
-                      // if no author ignore with ternary
+                      // if no author ignore with conditional ternary operator
                       authors={book.authors ? book.authors.join(): ""}
                       link={book.link}
                       description={book.description}

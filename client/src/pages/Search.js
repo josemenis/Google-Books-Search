@@ -22,12 +22,13 @@ class Search extends Component {
       .then(response => response.json())
       .then(results => {
         // q results
+        console.log('------loadBooks Results--------')
         console.log(results)
         this.setState({
           // books comes back as an object, we only want the items.
           books: results.items
         })
-        
+        console.log('-----loadBooks this.state.book--------')
         console.log(this.state.books)
       })
       .catch(err => console.log(err));
@@ -55,12 +56,14 @@ class Search extends Component {
   };
 
   handleSaveBook = id => {
-    // get book details from state
+    // get book details from state & save to a variable
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
     const book= this.state.books.find((book) => book.id === id)
+    console.log('-------handleSaveBook book------')
     console.log(book)
-    // send book details to save book api
+    // send book details to savebook API method
     API.saveBook({
+      // values from loadBook results.items
       title: book.volumeInfo.title,
       subtitle: book.volumeInfo.subtitle,
       authors: book.volumeInfo.authors,
@@ -99,11 +102,13 @@ class Search extends Component {
                 {
                   this.state.books.map(book => (                  
                     <Book
+                      // values from loadBook results.items
                       id={book.id}
                       key={book.id}
                       title={book.volumeInfo.title}
                       subtitle={book.volumeInfo.subtitle}
-                      // if no author ignore with ternary
+                      // not all books have authors, if no author ignore with conditional (ternary) operator
+                      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
                       authors={book.volumeInfo.authors ? book.volumeInfo.authors.join(): ""}
                       link={book.volumeInfo.infoLink}
                       description={book.volumeInfo.description}
