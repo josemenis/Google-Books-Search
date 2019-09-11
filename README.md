@@ -2,18 +2,26 @@
 ---
 # Overview:
 ## This application uses Google Books API to search for books. You can store the books in the search page. Then you can view the books in the saved page.
+
+[Link to App](https://googleb00ks.herokuapp.com/)
 --- 
 # How it works:
 
 *   The app has 2 pages :
     * One is [Search](Search.png) - User can search for books via the Google Books API & Render them here. 
 
+    ![search](images/g00gleBooks.PNG)
+
     * Then the user can "Save" a book, saving it to the database.
 
     * The Second is [Saved](Saved.png) - Renders all books saved to the database. 
     
+    ![saved](images/g00gleBooksSaved.PNG)
+
     * The user can "Delete" a book, removing it from the database.
 
+    ![deleted](images/g00gleBooksDeleted.PNG)
+    
     * In MongoDB there is a database named `googlebooks` and a Book schema using mongoose.
 
     * Books have the following fields:
